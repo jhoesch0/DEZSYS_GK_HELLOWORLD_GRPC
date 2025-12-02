@@ -16,8 +16,7 @@ public class HelloWorldServiceImpl extends HelloWorldServiceGrpc.HelloWorldServi
     }
 
     @Override
-    public void sendWarehouse(Hello.WarehouseRecord request,
-                              StreamObserver<Hello.HelloResponse> responseObserver) {
+    public void sendWarehouse(Hello.WarehouseRecord request,StreamObserver<Hello.HelloResponse> responseObserver) {
 
         System.out.println("Handling sendWarehouse endpoint: ");
         System.out.println("Warehouse ID: " + request.getWarehouseID());
@@ -25,13 +24,13 @@ public class HelloWorldServiceImpl extends HelloWorldServiceGrpc.HelloWorldServi
         System.out.println("Timestamp: " + request.getTimestamp());
         System.out.println("Products:");
 
-        for (Hello.ProductData p : request.getProductDataListList()) {
-            System.out.println("- " + p.getProductName() +
-                    " (ID " + p.getProductId() +
-                    ", Price " + p.getPrice() +
-                    ", Qty " + p.getQuantity() + ")");
-        }
-
+       for (Hello.ProductData p : request.getProductDataListList()) {
+    System.out.println("- " + p.getProductName() +
+            " (ID " + p.getProductId() +
+            ", Category " + p.getProductCategory() +
+            ", Price " + p.getPrice() +
+            ", Qty " + p.getQuantity() + ")");
+}
         String summary = "Warehouse '" + request.getWarehouseName()
                 + "' received with " + request.getProductDataListCount()
                 + " products.";

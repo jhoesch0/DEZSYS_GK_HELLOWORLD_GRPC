@@ -4,7 +4,6 @@ service HelloWorldService {
   rpc hello(HelloRequest) returns (HelloResponse) {}
   rpc sendWarehouse(WarehouseRecord) returns (HelloResponse) {}
 }
-
 message HelloRequest {
   string firstname = 1;
   string lastname = 2;
@@ -16,8 +15,9 @@ message HelloResponse {
 message ProductData {
   int32 productId = 1;
   string productName = 2;
-  double price = 3;
+  string productCategory = 3;
   int32 quantity = 4;
+  double price = 5;
 }
 message WarehouseRecord {
   string warehouseID = 1;

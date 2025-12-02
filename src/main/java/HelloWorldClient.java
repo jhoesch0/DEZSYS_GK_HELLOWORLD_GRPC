@@ -4,7 +4,6 @@ import io.grpc.ManagedChannelBuilder;
 public class HelloWorldClient {
 
     public static void main(String[] args) {
-
         String firstname = args.length > 0 ? args[0] : "Jonas";
         String lastname = args.length > 1 ? args[1] : "Hösch";
 
@@ -20,11 +19,7 @@ public class HelloWorldClient {
                 .build());
         System.out.println(helloResponse.getText());
 
-
-
         System.out.println("\nSending WarehouseRecord...\n");
-
-        // Build product list
         Hello.ProductData p1 = Hello.ProductData.newBuilder()
                 .setProductId(101)
                 .setProductName("Laptop Pro 15")
@@ -39,7 +34,6 @@ public class HelloWorldClient {
                 .setQuantity(10)
                 .build();
 
-        // Build warehouse record
         Hello.WarehouseRecord warehouse = Hello.WarehouseRecord.newBuilder()
                 .setWarehouseID("W-001")
                 .setWarehouseName("Main Warehouse Europe")
@@ -48,7 +42,6 @@ public class HelloWorldClient {
                 .addProductDataList(p2)
                 .build();
 
-        // Call RPC
         Hello.HelloResponse warehouseResponse = stub.sendWarehouse(warehouse);
         System.out.println("Server Response: " + warehouseResponse.getText());
 
